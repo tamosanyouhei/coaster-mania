@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      post:
+        user_name: 名前
+        content: コメント

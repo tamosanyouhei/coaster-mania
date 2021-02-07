@@ -1,0 +1,85 @@
+<div class="fujiyama-main">
+  <h2>FUJIYAMA</h2>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/Yb0RsBuc2pg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <div class="FUJIYAMA-imfomation">
+    <h2>スペック</h2>
+    <p>コース全長：2,045m </p>
+    <p>最高速度：130km</p>
+    <p>最大落差：70m</p>
+    <p>巻き上げ高さ：71.5m</p>
+  </div>
+  <div class="commentary">
+    <h2>解説</h2>
+    <p>日本を代表する名作ジェットコースター。開業当初、高さ、巻き上げ高さ、落差、最高速度の4項目で世界一を誇り、1997年度のギネスブックに掲載された。現在これらの記録は塗り替えられてしまったが、コースターファンを魅了し続けている。</p>
+  </div>
+  <div class="rate">
+    <h2>評価</h2>
+    <div class="rating_average">
+      <p>浮遊感</p>
+      <%= @post_average %>
+    </div>
+  </div>
+  <div class="comment">
+    <h2>コメント</h2>
+    <% @posts.each do |post| %>
+    <div class="posts-index-item">
+      <p>名前</p>
+      <%= post.user_name%>
+    </div>
+      <div class="posts-index-item">
+        <p>コメント</p>
+        <%= post.content%>
+      </div>
+      <div class="posts-index-item">
+        <p>浮遊感</p>
+        <%= post.f_level%>
+      </div>
+      <div class="post-time">
+        <%= post.created_at.strftime("%Y-%m-%d%H:%M")  %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="new">
+    <h2>コメント投稿</h2>
+    <%= form_tag("/list/createfujiyama") do %>
+    <% @post.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+          <div class="name-form">
+            <textarea name="user_name" cols= "55" value placeholder="名前"></textarea>
+          </div>
+          <div class="comment-form">
+            <textarea name ="content" cols = "55"></textarea>
+          </div>
+          <div class="rating">
+            <p>浮遊感</p>
+            <label>
+              <input type="radio" name="f_level" value="5"> 星５
+            </label>
+            <label>
+              <input type="radio" name="f_level" value="4"> 星４
+            </label>
+            <label>
+            <input type="radio" name="f_level" value="3"> 星３
+            </label>
+            <label>
+            <input type="radio" name="f_level" value="2"> 星２
+            </label>
+            <label>
+            <input type="radio" name="f_level" value="1"> 星１
+            </label>
+            <label>
+            <input type="radio" name="f_level" value="0"> 星０
+            </label>
+
+            <input type="hidden" name="coaster" value="FUJIYAMA">
+            </div>
+                    <input type= "submit" value="コメントを投稿する">
+                <% end %>
+
+  </div>
+</div>

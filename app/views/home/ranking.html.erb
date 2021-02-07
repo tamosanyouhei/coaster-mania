@@ -1,0 +1,18 @@
+<div class="ranking-main">
+  <h2>ジェットコースターランキング</h2>
+  <div class="comment">
+    <h2>浮遊感</h2>
+    <% @ranking.each do |ranking| %>
+    <div class="posts-index-item">
+      <p>名前</p>
+      <%= ranking.first%>
+    </div>
+      <div class="posts-index-item">
+        <p> 平均浮遊感</p>
+          <%= ranking.second%>
+
+      </div>
+    <% end %>
+  </div>
+
+</div>
